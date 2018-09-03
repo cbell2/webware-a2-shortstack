@@ -1,7 +1,7 @@
 var http = require('http')
   , fs   = require('fs')
   , url  = require('url')
-  , port = 8080;
+  , port = 8000;
 
 
 // NOTE: your dataset can be as simple as the following, you need only implement functions for addition, deletion, and modification that are triggered by outside (i.e. client) actions, and made available to the front-end
@@ -20,12 +20,22 @@ var server = http.createServer (function (req, res) {
       break
     case '/index.html':
       sendFile(res, 'public/index.html')
+      console.log('ldwadawdawd0')
       break
     case '/css/style.css':
       sendFile(res, 'public/css/style.css', 'text/css')
       break
     case '/js/scripts.js':
       sendFile(res, 'public/js/scripts.js', 'text/javascript')
+      break
+    case '/yes':
+      console.log('yeeet')
+      break
+    case '/barImage.jpg':
+      sendFile(res, 'barImage.jpg')
+      break
+    case '/beerTapTrans.png':
+      sendFile(res, 'beerTapTrans.png')
       break
     default:
       res.end('404 not found')
@@ -34,6 +44,7 @@ var server = http.createServer (function (req, res) {
 
 server.listen(process.env.PORT || port);
 console.log('listening on 8080')
+
 
 // subroutines
 // NOTE: this is an ideal place to add your data functionality
