@@ -53,6 +53,7 @@ var server = http.createServer(function(req, res) {
       break;
 
       case "POST":
+      console.log("POST request");
         break;
 
       else{
