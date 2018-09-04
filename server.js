@@ -56,10 +56,10 @@ var server = http.createServer(function(req, res) {
       console.log("POST request");
         break;
 
-      else{
+      default:
         get404(req, res);
         break;
-      }
+
   }
 })
 
