@@ -1,6 +1,8 @@
 var http = require('http'),
   fs = require('fs'),
   url = require('url'),
+  path = require('path'),
+  qs = require('querystring'),
   port = 8000;
 
 // NOTE: your dataset can be as simple as the following, you need only implement functions for addition, deletion, and modification that are triggered by outside (i.e. client) actions, and made available to the front-end
@@ -22,8 +24,7 @@ var data = [
 
 var server = http.createServer(function(req, res) {
   var uri = url.parse(req.url)
-  switch (req.method) {
-    case "GET":
+  if (req.method === 'GET') {
       switch (uri.pathname) {
         case '/':
           sendFile(res, 'public/index.html')
@@ -50,18 +51,26 @@ var server = http.createServer(function(req, res) {
         default:
           res.end('404 not found')
       }
-      break;
-
-      case "POST":
+    }else if(req.method === 'POST'){
       console.log("POST request");
-        break;
+      var body = '';
+        req.on('data', function (data) {
+            body += data;
+        });
+        req.on('end', function () {
+            console.log("Body: " + body);
+            var formData = qs.parse(body);
+            console.log(formData.brewer);
+            //doAPICall()
+        });
+        res.writeHead(200, {'Content-Type': 'text/html'});
+        //res.end('post received');
 
-      default:
+    }else{
         get404(req, res);
-        break;
-
+      }
   }
-})
+)
 
 server.listen(process.env.PORT || port);
 console.log('listening on 8080')
@@ -72,11 +81,12 @@ function get404(req, res){
 // subroutines
 // NOTE: this is an ideal place to add your data functionality
 
+/*
 function submitbyid(){
   var brewer = document.getElementById("brewer").value;
   console.log(brewer);
 }
-
+*/
 
 
 function sendFile(res, filename, contentType) {
