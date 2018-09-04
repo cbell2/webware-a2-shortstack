@@ -72,6 +72,13 @@ function get404(req, res){
 // subroutines
 // NOTE: this is an ideal place to add your data functionality
 
+function submitbyid(){
+  var brewer = document.getElementById("brewer").value;
+  console.log(brewer);
+}
+
+
+
 function sendFile(res, filename, contentType) {
   contentType = contentType || 'text/html';
 
