@@ -90,28 +90,11 @@ function doAPICall(res, req, data){
   //do the api call
   var parsedData;
   var cont = 0;
-  http.get(apiUrl, (resp) => {
-    let data = '';
-    resp.on('data', (chunk) => {
-      data += chunk;
-    });
 
-    // The whole response has been received. Print out the result.
-    resp.on('end', () => {
-      console.log(data);
-      parsedData = JSON.parse(data);
-      console.log(parsedData.records[0].fields.descript);
-      console.log(parsedData.records[1].fields.descript);
-      //console.log(parsedData.records.length);
-    });
-    }).on("error", (err) => {
-      console.log("Error: " + err.message);
-    });
+  parsedData= makeCall(apiUrl, res, req, alcLow, alcHigh, processResponse);
 
 
-    setTimeout(function(){
-      console.log(parsedData.records[1].fields.descript);
-    }, 1000);
+
 
     //console.log(parsedData.records[1].fields.descript);
 
@@ -155,6 +138,40 @@ function doAPICall(res, req, data){
     //console.log("There are " + listSize + " options.");
   //send the data back with index.html
 }
+
+  function makeCall(apiUrl, res, req, alcLow, alcHigh, callback){
+    http.get(apiUrl, (resp) => {
+      let data = '';
+      resp.on('data', (chunk) => {
+        data += chunk;
+      });
+
+      // The whole response has been received. Print out the result.
+      resp.on('end', () => {
+        console.log(data);
+        parsedData = JSON.parse(data);
+        callback(res, req, alcLow, alcHigh, parsedData);
+        //console.log(parsedData.records[0].fields.descript);
+        //console.log(parsedData.records[1].fields.descript);
+        //console.log(parsedData.records.length);
+      });
+      }).on("error", (err) => {
+        console.log("Error: " + err.message);
+      });
+  }
+
+  function processResponse(res, req, alcLow, alcHigh, parsedData){
+    console.log(parsedData.records[1].fields.descript);
+    console.log(parsedData.nhits);
+    var alcByVolumeList = [];
+    for(var x = 0; x < parsedData.nhits; x++){
+      if (parsedData.records[x].fields.abv > alcLow && parsedData.records[x].fields.abv < alcHigh){
+        alcByVolumeList.push(parsedData.records[x]);
+      }
+    }
+
+     console.log(alcByVolumeList);
+  }
 
 
 
