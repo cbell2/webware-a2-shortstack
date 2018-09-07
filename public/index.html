@@ -1,33 +1,35 @@
 <html lang="en">
-  <head>
-    <title>CS4241 Assignment 2</title>
-    <meta charset="utf-8">
-    <link rel="stylesheet" type="text/css" href="css/style.css"/>
-    <script src="js/scripts.js"></script>
-  </head>
-  <body style="background-image: url(../barImage.jpg); background-size: cover;">
-    <!-- <div class="header">
+
+<head>
+  <title>CS4241 Assignment 2</title>
+  <meta charset="utf-8">
+  <link rel="stylesheet" type="text/css" href="css/style.css" />
+  <script src="js/scripts.js"></script>
+</head>
+
+<body style="background-image: url(../barImage.jpg); background-size: cover;">
+  <!-- <div class="header">
     	<h1>Assignment 2</h1>
     </div> -->
 
-    <br>
+  <br>
 
-    <div class="content">
-        <form action= "#" method="POST" id="form_id" style="background-color: #18343d; width: 50%; height: auto; color:white; box-shadow: 5px 10px 18px black; text-align: center; float: left;">
+  <div class="content">
+    <form action="#" method="POST" id="form_id" style="background-color: #18343d; width: 50%; height: auto; color:white; box-shadow: 5px 10px 18px black; text-align: center; float: left;">
 
-          <br>
+      <br>
 
-          <h2 style="color: white; text-align: center"> Assignment 2 - Beer Recommender Website</h2>
+      <h2 style="color: white; text-align: center"> Assignment 2 - Beer Recommender Website</h2>
 
-          <hr style="width: 80%; border-color: #ebb86e">
-          <h2 style="color:#ebb86e; text-align: center; font-style: italic">Alcohol Content</h1>
+      <hr style="width: 80%; border-color: #ebb86e">
+      <h2 style="color:#ebb86e; text-align: center; font-style: italic">Alcohol Content</h1>
           <hr style="width: 80%; border-color: #ebb86e">
 
           <label for="Alcohol1">Between</label>
           <input id="alcohol_low" name="Alcohol1" value="0" style="width: 30px; text-align: center">
-          <label for="Alcohol2"> and </label>
-          <input id="alcohol_low" name="Alcohol2" value="0" style="width: 30px; text-align: center">
-          <label for="Alcohol2"> alcohol by volume </label>
+          <label for="Alcohol2">% and </label>
+          <input id="alcohol_low" name="Alcohol2" value="100" style="width: 30px; text-align: center">
+          <label for="Alcohol2">% alcohol by volume </label>
 
           <hr style="width: 80%; border-color: #ebb86e">
           <h2 style="color:#ebb86e; text-align: center; font-style: italic">Style</h1>
@@ -35,27 +37,88 @@
 
           <label for="style">What style of beer do you want to order?</label>
           <select id="style" name="style">
+              <option selected="selected" value="Any">Any</option>
+              <option value="Style+Pale+Ale">Style Pale Ale</option>
+              <option value="American-Style+Lager">American-Style Lager</option>
+              <option value="American-Style+Stout">American-Style Stout</option>
+              <option value="American-Style+Amber/Red+Ale">American-Style Amber/Red Ale</option>
+              <option value="American-Style+India+Pale+Ale">American-Style India Pale Ale</option>
+              <option value="Porter">Porter</option>
+              <option value="American-Style+Brown+Ale">American-Style Brown Ale</option>
+              <option value="South+German-Style+Hefeweizen">South German-Style Hefeweizen</option>
+              <option value="Traditional+German-Style+Bock">Traditional German-Style Bock</option>
+              <option value="Light+American+Wheat+Ale+or+Lager">Light American Wheat Ale or Lager</option>
+              <option value="German-Style+Oktoberfest">German-Style Oktoberfest</option>
+              <option value="Imperial+or+Double+India+Pale+Ale">Imperial or Double India Pale Ale</option>
+              <option value="Other+Belgian-Style+Ales">Other Belgian-Style Ales</option>
+              <option value="American-Style+Imperial+Stout">American-Style Imperial Stout</option>
+              <option value="Old+Ale">Old Ale</option>
+              <option value="German-Style+Pilsener">German-Style Pilsener</option>
+              <option value="Scotch+Ale">Scotch Ale</option>
+              <option value="Belgian-Style+White">Belgian-Style White</option>
+              <option value="Fruit+Beer">Fruit Beer</option>
+              <option value="Belgian-Style+Fruit+Lambic">Belgian-Style Fruit Lambic</option>
+              <option value="American-Style+Light+Lager">American-Style Light Lager</option>
+              <option value="German-Style+Schwarzbier">German-Style Schwarzbier</option>
+              <option value="Belgian-Style+Tripel">Belgian-Style Tripel</option>
+              <option value="Golden+or+Blonde Ale">Golden or Blonde Ale</option>
+              <option value="American-Style+Barley+Wine+Ale">American-Style Barley Wine Ale</option>
+              <option value="Extra+Special+Bitter">Extra Special Bitter</option>
+              <option value="English-Style+Pale+Mild+Ale">English-Style Pale Mild Ale</option>
+              <option value="Oatmeal+Stout">Oatmeal Stout</option>
+              <option value="French+&+Belgian-Style Saison">French & Belgian-Style Saison</option>
+              <option value="German-Style Heller+Bock/Maibock">German-Style Heller Bock/Maibock</option>
+              <option value="Irish-Style+Red+Ale">Irish-Style Red Ale</option>
+              <option value="Winter+Warmer">Winter Warmer</option>
+              <option value="Dark+American-Belgo-Style+Ale">Dark American-Belgo-Style Ale</option>
+              <option value="German-Style+Doppelbock">German-Style Doppelbock</option>
+              <option value="Classic+English-Style+Pale+Ale">Classic English-Style Pale Ale</option>
+              <option value="Belgian-Style+Dubbel">Belgian-Style Dubbel</option>
+              <option value="South+German-Style+Weizenbock">South German-Style Weizenbock</option>
+              <option value="Pumpkin+Beer">Pumpkin Beer</option>
+              <option value="German-Style+Brown+Ale/Altbier">German-Style Brown Ale/Altbier</option>
+              <option value="Ordinary+Bitter">Ordinary Bitter</option>
+              <option value="Belgian-Style+Pale+Strong+Ale">Belgian-Style Pale Strong Ale</option>
+              <option value="American-Style+Strong+Pale+Ale">American-Style Strong Pale Ale</option>
+              <option value="Belgian-Style+Dark+Strong+Ale">Belgian-Style Dark Strong Ale</option>
+              <option value="Sweet+Stout">Sweet Stout</option>
+              <option value="American-Style+Cream+Ale+or+Lager">American-Style Cream Ale or Lager</option>
+              <option value="English-Style+India+Pale+Ale">English-Style India Pale Ale</option>
+              <option value="Special+Bitter+or+Best+Bitter">Special Bitter or Best Bitter</option>
+              <option value="American+Rye+Ale+or+Lager">American Rye Ale or Lager</option>
+              <option value="Herb+and+Spice Beer">Herb and Spice Beer</option>
+              <option value="Belgian-Style+Quadrupel">Belgian-Style Quadrupel</option>
+              <option value="Belgian-Style+Pale+Ale">Belgian-Style Pale Ale</option>
+              <option value="Baltic-Style+Porter">Baltic-Style Porter</option>
+              <option value="Out+of+Category">Out of Category</option>
+              <option value="Scottish-Style+Light+Ale">Scottish-Style Light Ale</option>
+              <option value="Strong+Ale">Strong Ale</option>
+              <option value="Vienna-Style+Lager">Vienna-Style Lager</option>
+              <option value="American-Style+Dark+Lager">American-Style Dark Lager</option>
+              <option value="American-Style+India+Black+Ale">American-Style India Black Ale</option>
+              <option value="Bamberg-Style+Bock+Rauchbier">Bamberg-Style Bock Rauchbier</option>
+              <option value="Classic+Irish-Style+Dry+Stout">Classic Irish-Style Dry Stout</option>
+              <option value="English-Style+Dark+Mild+Ale">English-Style Dark Mild Ale</option>
+              <option value="European+Low-Alcohol+Lager">European Low-Alcohol Lager</option>
+              <option value="Kellerbier+-+Ale">Kellerbier - Ale</option>
               <option value="Porter">Porter</option>
             </select>
 
-          <!-- <div>
-            <label for="say">What greeting do you want to say?</label>
-            <input name="say" id="say" value="Hi">
-          </div>
-          <div>
-            <label for="to">Who do you want to say it to?</label>
-            <input name="to" id="to" value="Mom">
-          </div> -->
-          <div>
-            <!-- <button>Send my greetings</button> -->
-          </div>
           <hr style="width: 80%; border-color: #ebb86e">
           <h2 style="color:#ebb86e; text-align: center; font-style: italic">Category</h1>
           <hr style="width: 80%; border-color: #ebb86e">
 
           <label for="categories">What category of beer do you want to order?</label>
           <select id="categories" name="categories">
-              <option value="Irish+Ale">Irish Ale</option>
+              <option selected="selected" value="Any">Any</option>
+              <option value="North+American+Ale">North American Ale</option>
+              <option value="North+American+Lager">North American Lager</option>
+              <option value="German+Lager">German Lager</option>
+              <option value="Belgian+and+French Ale">Belgian and French Ale</option>
+              <option value="British+Ale">British Ale</option>
+              <option value="Other+Style">Other Style</option>
+              <option value="German+Ale">German Ale</option>
+              <option value="Other+Lager">Other Lager</option>
             </select>
 
           <hr style="width: 80%; border-color: #ebb86e">
@@ -64,7 +127,105 @@
 
           <label for="brewer">What brewery do you want to order from?</label>
           <select id="brewer" name="brewer">
+              <option selected="selected" value="Any">Any</option>
+              <option value="Midnight+Sun+Brewing+Co.">Midnight Sun Brewing Co.</option>
+              <option value="Rogue+Ales">Rogue Ales</option>
+              <option value="Pyramid+Alehouse,+Brewery+and+Restaurant+-+Berkeley">Pyramid Alehouse- Berkeley</option>
+              <option value="Anheuser-Busch">Anheuser-Busch</option>
+              <option value="Egan+Brewing">Egan Brewing</option>
+              <option value="Troegs+Brewing">Troegs Brewing</option>
               <option value="Boston+Beer+Company">Boston Beer Company</option>
+              <option value="F.X.+Matt+Brewing">F.X. Matt Brewing</option>
+              <option value="Titletown+Brewing">Titletown Brewing</option>
+              <option value="Sierra+Nevada+Brewing+Co.">Sierra Nevada Brewing Co.</option>
+              <option value="Stone+Brewing+Co.">Stone Brewing Co.</option>
+              <option value="Southern+Tier+Brewing+Co">Southern Tier Brewing Co</option>
+              <option value="Weyerbacher+Brewing+Company">Weyerbacher Brewing Company</option>
+              <option value="Goose+Island+Beer+Company+-+Clybourn">Goose Island Beer Company- Clybourn</option>
+              <option value="Gottberg+Brew+Pub">Gottberg Brew Pub</option>
+              <option value="Appalachian+Brewing+Company">Appalachian Brewing Company</option>
+              <option value="Dogfish+Head+Craft+Brewery">Dogfish Head Craft Brewery</option>
+              <option value="Bell's+Brewery+Inc.">Bell's Brewery Inc.</option>
+              <option value="Victory+Brewing">Victory Brewing</option>
+              <option value="Deschutes+Brewery">Deschutes Brewery</option>
+              <option value="New+Glarus+Brewing+Company">New Glarus Brewing Company</option>
+              <option value="Otto's+Pub+and+Brewery">Otto's Pub and Brewery</option>
+              <option value="Abita+Brewing+Company">Abita Brewing Company</option>
+              <option value="Capital+Brewery">Capital Brewery</option>
+              <option value="Great+Divide+Brewing">Great Divide Brewing</option>
+              <option value="The+Livery">The Livery</option>
+              <option value="Anchor+Brewing">Anchor Brewing</option>
+              <option value="Empyrean+Brewing+Company">Empyrean Brewing Company</option>
+              <option value="Lakefront+Brewery">Lakefront Brewery</option>
+              <option value="Magic+Hat">Magic Hat</option>
+              <option value="Middle+Ages+Brewing">Middle Ages Brewing</option>
+              <option value="Amherst+Brewing+Company">Amherst Brewing Company</option>
+              <option value="Saint+Louis+Brewery+/+Schlafy+Tap+Room">Saint Louis Brewery / Schlafy Tap Room</option>
+              <option value="De+Proef+Brouwerij">De Proef Brouwerij</option>
+              <option value="Great+Dane+Pub+and+Brewing+#1">Great Dane Pub and Brewing #1</option>
+              <option value="Hoppin+Frog+Brewery">Hoppin Frog Brewery</option>
+              <option value="Michigan+Brewing">Michigan Brewing</option>
+              <option value="Thirsty+Dog+Brewing">Thirsty Dog Brewing</option>
+              <option value="Thunderhead+Brewery">Thunderhead Brewery</option>
+              <option value="Appleton+Brewing">Appleton Brewing</option>
+              <option value="Breckenridge+Brewery">Breckenridge Brewery</option>
+              <option value="Fish+Brewing+Company+&+Fish+Tail+Brewpub">Fish Brewing Company & Fish Tail Brewpub</option>
+              <option value="Flying+Dog+Brewery">Flying Dog Brewery</option>
+              <option value="Four+Peaks+Brewing">Four Peaks Brewing</option>
+              <option value="Lancaster+Brewing+Co.">Lancaster Brewing Co.</option>
+              <option value="Nebraska+Brewing+Company">Nebraska Brewing Company</option>
+              <option value="Port+Brewing+Company">Port Brewing Company</option>
+              <option value="The+Alchemist">The Alchemist</option>
+              <option value="Unibroue">Unibroue</option>
+              <option value="Clipper+City+Brewing+Co.">Clipper City Brewing Co.</option>
+              <option value="New+Belgium+Brewing">New Belgium Brewing</option>
+              <option value="North+Coast+Brewing+Company">North Coast Brewing Company</option>
+              <option value="Three+Floyds+Brewing">Three Floyds Brewing</option>
+              <option value="Upstream+Brewing+Old+Market">Upstream Brewing Old Market</option>
+              <option value="Founders+Brewing">Founders Brewing</option>
+              <option value="Goose+Island+Beer+Company+-+Fulton+Street">Goose Island Beer Company - Fulton Street</option>
+              <option value="JT+Whitney's+Brewpub+and+Eatery">JT Whitney's Brewpub and Eatery</option>
+              <option value="JW+Lees+and+Co+(Brewers)+Ltd.">JW Lees and Co (Brewers) Ltd.</option>
+              <option value="Jacob+Leinenkugel+Brewing+Company">Jacob Leinenkugel Brewing Company</option>
+              <option value="Lagunitas+Brewing+Company">Lagunitas Brewing Company</option>
+              <option value="New+Holland+Brewing+Company">New Holland Brewing Company</option>
+              <option value="Sprecher+Brewing">Sprecher Brewing</option>
+              <option value="Steamworks">Steamworks</option>
+              <option value="Arcadia+Brewing">Arcadia Brewing</option>
+              <option value="Atwater+Block+Brewing">Atwater Block Brewing</option>
+              <option value="Avery+Brewing+Company">Avery Brewing Company</option>
+              <option value="Boulevard+Brewing+Company">Boulevard Brewing Company</option>
+              <option value="BridgePort+Brewing">BridgePort Brewing</option>
+              <option value="Crane+River+Brewpub+and+Cafe">Crane River Brewpub and Cafe</option>
+              <option value="Dragonmead+Microbrewery">Dragonmead Microbrewery</option>
+              <option value="Fratellos+Restaurant+and+Brewery">Fratellos Restaurant and Brewery</option>
+              <option value="Gordon+Biersch+Brewing">Gordon Biersch Brewing</option>
+              <option value="Green+Bay+Brewing">Green Bay Brewing</option>
+              <option value="Jolly+Pumpkin+Artisan+Ales">Jolly Pumpkin Artisan Ales</option>
+              <option value="Rahr+&+Sons+Brewing+Company">Rahr & Sons Brewing Company</option>
+              <option value="River+West+Brewing">River West Brewing</option>
+              <option value="Sly+Fox+Brewhouse+and+Eatery+-+Royersford">Sly Fox Brewhouse and Eatery - Royersford</option>
+              <option value="Terrapin+Beer+Company">Terrapin Beer Company</option>
+              <option value="Tyranena+Brewing">Tyranena Brewing</option>
+              <option value="Boulder+Beer+Company">Boulder Beer Company</option>
+              <option value="BrewDog+Ltd">BrewDog Ltd</option>
+              <option value="Brouwerij+Van+Steenberge">Brouwerij Van Steenberge</option>
+              <option value="Bull+&+Bush+Pub+&+Brewery">Bull & Bush Pub & Brewery</option>
+              <option value="Dick's+Brewing">Dick's Brewing</option>
+              <option value="Elysian+Brewery+&+Public+House">Elysian Brewery & Public House</option>
+              <option value="Great+Lakes+Brewing">Great Lakes Brewing</option>
+              <option value="Humboldt+Brewing">Humboldt Brewing</option>
+              <option value="Kulmbacher+Brauerei+AG">Kulmbacher Brauerei AG</option>
+              <option value="Labatt+Ontario+Breweries">Labatt Ontario Breweries</option>
+              <option value="Minneapolis+Town+Hall+Brewery">Minneapolis Town Hall Brewery</option>
+              <option value="Paulaner">Paulaner</option>
+              <option value="Pyramid+Ales+Brewery">Pyramid Ales Brewery</option>
+              <option value="Redhook+Ale+Brewery">Redhook Ale Brewery</option>
+              <option value="Russian+River+Brewing">Russian River Brewing</option>
+              <option value="21st+Amendment+Brewery+Cafe">21st Amendment Brewery Cafe</option>
+              <option value="Alaskan+Brewing">Alaskan Brewing</option>
+              <option value="Big+Time+Brewing">Big Time Brewing</option>
+              <option value="Brooklyn+Brewery">Brooklyn Brewery</option>
             </select>
 
           <hr style="width: 80%; border-color: #ebb86e">
@@ -73,12 +234,70 @@
 
           <label for="country">What country do you want to order from?</label>
           <select id="country" name="country">
+              <option selected="selected" value="Any">Any</option>
               <option value="United+States">United States</option>
+              <option value="Belgium">Belgium</option>
+              <option value="Germany">Germany</option>
+              <option value="United+Kingdom">United Kingdom</option>
+              <option value="Canada">Canada</option>
+              <option value="Netherlands">Netherlands</option>
+              <option value="Austria">Austria</option>
+              <option value="Switzerland">Switzerland</option>
+              <option value="Australia">Australia</option>
+              <option value="Norway">Norway</option>
+              <option value="Japan">Japan</option>
+              <option value="France">France</option>
+              <option value="Czech+Republic">Czech Republic</option>
+              <option value="Ireland">Ireland</option>
+              <option value="India">India</option>
+              <option value="Mexico">Mexico</option>
+              <option value="New+Zealand">New Zealand</option>
+              <option value="Italy">Italy</option>
+              <option value="England">England</option>
+              <option value="Sweden">Sweden</option>
+              <option value="Brazil">Brazil</option>
+              <option value="Denmark">Denmark</option>
+              <option value="Russia">Russia</option>
+              <option value="El+Salvador">El Salvador</option>
+              <option value="Spain">Spain</option>
+              <option value="Argentina">Argentina</option>
+              <option value="Hungary">Hungary</option>
+              <option value="Lithuania">Lithuania</option>
+              <option value="Finland">Finland</option>
+              <option value="Jamaica">Jamaica</option>
+              <option value="Korea,+Republic+of">Republic of Korea</option>
+              <option value="Latvia">Latvia</option>
+              <option value="Panama">Panama</option>
+              <option value="China">China</option>
+              <option value="Greece">Greece</option>
+              <option value="Philippines">Philippines</option>
+              <option value="Sri+Lanka">Sri Lanka</option>
+              <option value="Thailand">Thailand</option>
+              <option value="Aruba">Aruba</option>
+              <option value="Belize">Belize</option>
+              <option value="Colombia">Colombia</option>
+              <option value="Croatia">Croatia</option>
+              <option value="Cuba">Cuba</option>
+              <option value="Egypt">Egypt</option>
+              <option value="Estonia">Estonia</option>
+              <option value="French+Polynesia">French Polynesia</option>
+              <option value="Guatemala">Guatemala</option>
+              <option value="Honduras">Honduras</option>
+              <option value="Israel">Israel</option>
+              <option value="Kenya">Kenya</option>
+              <option value="Macao">Macao</option>
+              <option value="Macedonia,+the+Former+Yugoslav+Republic+of">Macedonia</option>
+              <option value="Mauritius">Mauritius</option>
+              <option value="Myanmar">Myanmar</option>
+              <option value="Namibia">Namibia</option>
+              <option value="Portugal">Portugal</option>
+              <option value="Sierra+Leone">Sierra Leone</option>
+              <option value="Slovakia">Slovakia</option>
+              <option value="Taiwan,+Province+of+China">Taiwan</option>
+              <option value="Togo">Togo</option>
             </select>
-
             <br>
             <br>
-
             <button type="submit">Submit</button>
 
           <br>
