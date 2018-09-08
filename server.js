@@ -59,14 +59,14 @@ var server = http.createServer(function(req, res) {
       body += data;
     });
     req.on('end', function() {
-      //console.log("Body: " + body);
-      var formData = qs.parse(body);
+      console.log("Body: " + body);
+      var formData = JSON.parse(body);
       console.log(formData.brewer);
       console.log(formData.categories);
       console.log(formData.style);
       console.log(formData.country);
 
-      doAPICall(req, res, formData)
+      doAPICall(res, formData)
     });
 
   } else {
@@ -77,7 +77,7 @@ var server = http.createServer(function(req, res) {
 server.listen(process.env.PORT || port);
 console.log('listening on 8080')
 
-function doAPICall(res, req, data) {
+function doAPICall(res, data) {
   //separate the data
   //get the data needed for api call
   var alcLow = data.Alcohol1;
@@ -114,10 +114,10 @@ function doAPICall(res, req, data) {
   var apiUrl = 'http://data.opendatasoft.com/api/records/1.0/search/?dataset=open-beer-database%40public-us&rows=6000&facet=style_name&facet=cat_name&facet=name_breweries&facet=country' + categoryTrue + category + countryTrue + country + brewerTrue + brewer + styleTrue + style;
   console.log(apiUrl);
   //do the api call
-  parsedData = makeCall(apiUrl, res, req, alcLow, alcHigh, processResponse);
+  parsedData = makeCall(apiUrl, res, alcLow, alcHigh, processResponse);
 }
 
-function makeCall(apiUrl, res, req, alcLow, alcHigh, callback) {
+function makeCall(apiUrl, res, alcLow, alcHigh, callback) {
   var parsedData;
   http.get(apiUrl, (resp) => {
     let data = '';
@@ -129,14 +129,14 @@ function makeCall(apiUrl, res, req, alcLow, alcHigh, callback) {
     resp.on('end', () => {
       //console.log(data);
       parsedData = JSON.parse(data);
-      callback(res, req, alcLow, alcHigh, parsedData);
+      callback(res, alcLow, alcHigh, parsedData);
     });
   }).on("error", (err) => {
     console.log("Error: " + err.message);
   });
 }
 
-function processResponse(res, req, alcLow, alcHigh, parsedData) {
+function processResponse(res, alcLow, alcHigh, parsedData) {
   //console.log(parsedData.records[1].fields.descript);
   console.log(parsedData.nhits);
   var alcByVolumeList = [];
@@ -149,7 +149,10 @@ function processResponse(res, req, alcLow, alcHigh, parsedData) {
 
   console.log(alcByVolumeList.length);
 
-  //res.writeHead(200, {'Content-Type': 'text/html'});
+  //THIS DOES NOT WORK YET!!!
+  res.writeHead(200, {'Content-Type': 'application/x-www-form-urlencoded'});
+  res.end(JSON.stringify(alcByVolumeList));
+
   //res.end('post received');
 
 
