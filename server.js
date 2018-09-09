@@ -3,7 +3,7 @@ var http = require('http'),
   url = require('url'),
   path = require('path'),
   qs = require('querystring'),
-  XMLHttpRequest = require("xmlhttprequest").XMLHttpRequest,
+  // XMLHttpRequest = require("xmlhttprequest").XMLHttpRequest,
   port = 8000;
 
 // NOTE: your dataset can be as simple as the following, you need only implement functions for addition, deletion, and modification that are triggered by outside (i.e. client) actions, and made available to the front-end
@@ -43,12 +43,21 @@ var server = http.createServer(function(req, res) {
       case '/yes':
         console.log('yeeet')
         break;
-      case '/barImage.jpg':
+        case '/barImage.jpg':
         sendFile(res, 'barImage.jpg')
-        break;
+        break
       case '/beerTapTrans.png':
         sendFile(res, 'beerTapTrans.png')
-        break;
+        break
+      case '/beerGlass2.png':
+        sendFile(res, 'beerGlass2.png')
+        break
+      case '/beer.png':
+        sendFile(res, 'beer.png')
+        break
+      case '/kindergarten.jpg':
+        sendFile(res, 'kindergarten.jpg')
+        break
       default:
         res.end('404 not found')
     }
@@ -107,7 +116,7 @@ function doAPICall(res, data) {
   }
 
   if(data.country !== 'Any'){
-    style = data.country;
+    country = data.country;
     countryTrue = '&refine.country=';
   }
   //organize the data
