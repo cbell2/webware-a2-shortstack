@@ -1,4 +1,56 @@
 <html lang="en">
+<<<<<<< HEAD
+=======
+<style>
+#popup-wrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(255,255,255,.5);
+  z-index: 100;
+}
+#popup {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  width: 600px;
+  height: 500px;
+  margin-left:-300px;
+  margin-top:-250px;
+  background: #FFFFFF;
+  border: 5px solid #000000;
+  border-radius: 25px;
+}
+#popup_logo {
+  position: relative;
+  display: block;
+  width: 200px;
+  height: 200px;
+  margin-left: auto;
+  margin-right: auto;
+ }
+#popup_submit {
+  position: relative;
+  width: 120px;
+  height: 47px;
+  border: 2px solid #000000;
+  border-radius: 10px;
+  background: url(images/Enter-button.png) no-repeat;
+  cursor: pointer;
+}
+p {
+  font: bold 20px Tahoma;
+  color: #000000;
+  text-align: center;
+}
+select {
+  width: 150px;
+  margin: 10px;
+}
+</style>
+>>>>>>> 8db8869170222ec2ece2a0ac8b5f734560a1ed95
 <head>
   <style src="css/style.css"></style>
   <title>CS4241 Assignment 2</title>
@@ -70,7 +122,11 @@
           <br />
           <br />
           <br />
+<<<<<<< HEAD
           <input type="button" id="popup_submit" value="Submit" onclick="checkAge()"/>
+=======
+          <input type="button" id="popup_submit" value="Submit" onClick="checkAge()" />
+>>>>>>> 8db8869170222ec2ece2a0ac8b5f734560a1ed95
         </div>
       </div>
     </div>
@@ -359,6 +415,7 @@
             </select>
             <br>
             <br>
+<<<<<<< HEAD
             <input id="the-button" type="submit" value="Submit"></input>
             <br>
             <br>
@@ -372,8 +429,108 @@
       <div style="border-bottom: 400px solid rgba(219,219, 219);height: 0;width: 5px;float: right;position: absolute;right: 360px;bottom: 30px;"></div>
 
       <img src="../beerTapTrans.png" style="width: 310px;/* float: right; *//* margin-top: -120px; */position:  absolute;right: px;right: 87px;/* left: 500; */top: -10px;">
+=======
 
+            <input id="the-button" type="submit" value="Submit">
+
+          <br>
+          <br>
+
+        </form>
+
+        <img src="beerGlass2.png" style="opacity: 0.8;width: 310px;/* float: right; *//* margin-top: -120px; */position:  absolute;right: px;right: 150px;/* left: 500; */top: 230px;">
+        <img src="beer.png" id="beer" class="transform" style="opacity: 0.8; width: 300px; position: absolute; right: 155px; top: 240px;;">
+        <p id="n1" style="color: #cdcbc9;font-size: 20;position: absolute;right: px;right: 215px;/* left: 500; */top: 350px;"></p>
+        <p id="n2" style="color: #cdcbc9;font-size: 20;position: absolute;right: px;right: 300px;/* left: 500; */top: 400px;"></p>
+>>>>>>> 8db8869170222ec2ece2a0ac8b5f734560a1ed95
+
+        <img src="beerTapTrans.png" onclick="myFunction()" style="width: 310px;/* float: right; *//* margin-top: -120px; */position:  absolute;right: px;right: 145px;/* left: 500; */top: -95px;">
+        
     </div>
 
   </body>
+<<<<<<< HEAD
+=======
+
+  <script>
+
+  </script>
+
+  <script>
+  function checkAge() {
+    var date = new Date();
+    var now = date.getTime(); // Current time
+
+    var userDate = document.getElementById('day').value +"/"+ document.getElementById('month').value +"/"+  document.getElementById('year').value;
+    var bday = new Date(userDate).getTime(); // Time of user's birthday
+
+    var age = (now - bday) / (1000 * 356 * 24 * 3600); // Calculate age
+
+    if (age < 18) {
+      alert("You must be 21 years of age to see the brews.");
+      // route to baby page
+    } else {
+      document.getElementById('popup-wrapper').style.display="none";
+    }
+  }
+
+  function myFunction() {
+  
+      // document.getElementById("demo").innerHTML = "Hello World";
+      var elem = document.getElementById("beer");
+      console.log("Hello");
+      
+      var pos = 500;
+var id = setInterval(frame, 20);
+function frame() {
+if (pos == 240) {
+clearInterval(id);
+} else {
+pos--; 
+elem.style.top = pos + 'px'; 
+// elem.style.left = pos + 'px'; 
+}
+}
+    }
+
+  window.addEventListener("DOMContentLoaded", function () {
+    var form = document.getElementById("the-button").addEventListener("click", function (){
+      event.preventDefault();
+      var dataForm = new FormData(document.getElementById("form_id"));
+      var ConvertedJSON= {
+        "Alcohol1": document.getElementById('alcohol_low').value,
+        "Alcohol2": document.getElementById('alcohol_high').value,
+        "brewer": document.getElementById('brewer').value,
+        "categories": document.getElementById('categories').value,
+        "style": document.getElementById('style').value,
+        "country": document.getElementById('country').value,
+      };
+      xhr = new XMLHttpRequest();
+      xhr.onreadystatechange = handle_res;
+      xhr.open('POST', '/json-handler');
+      xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+      alert(document.getElementById('country').value);
+      xhr.send(JSON.stringify(ConvertedJSON));
+
+      function handle_res(){
+        // if(this.readState != 4) return;
+        if(this.status == 200){
+          var beers = JSON.parse(this.responseText);
+          alert(beers.length);
+          var one = beers[0];
+          var alc = JSON.stringify(one.fields.abv);
+          alert(one.fields.abv);
+          alert(one.fields.city);
+          alert(one.fields.name);
+          document.getElementById("n1").innerHTML = one.fields.name;
+          document.getElementById("n2").innerHTML = alc.substring(0,3);
+      }
+    }
+    }
+  )
+}
+
+)
+  </script>
+>>>>>>> 8db8869170222ec2ece2a0ac8b5f734560a1ed95
 </html>
