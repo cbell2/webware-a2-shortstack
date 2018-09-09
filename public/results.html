@@ -1,0 +1,59 @@
+<html lang="en">
+  <head>
+    <style src="css/style.css"></style>
+    <title>CS4241 Assignment 2</title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="css/style.css"/>
+    <script>
+    function addRow(tableID) {
+    			var table = document.getElementById(tableID);
+
+    			var rowCount = table.rows.length;
+    			var row = table.insertRow(rowCount);
+
+    			var cell1 = row.insertCell(0);
+    			var element1 = document.createElement("input");
+    			element1.type = "checkbox";
+    			element1.name="chkbox[]";
+    			cell1.appendChild(element1);
+
+    			var cell2 = row.insertCell(1);
+    			cell2.innerHTML = rowCount + 1;
+
+    			var cell3 = row.insertCell(2);
+    			var element2 = document.createElement("input");
+    			element2.type = "text";
+    			element2.name = "txtbox[]";
+    			cell3.appendChild(element2);
+
+
+    		}
+        function populateTable() {
+          // call addRows a bunch of times
+          addRow("results");
+          addRow("results");
+          addRow("results");
+        }
+        window.onload = populateTable;
+    </script>
+  </head>
+  <body style="background-image: url(barImage.jpg); background-size: cover;">
+    <br>
+    <input id="back" type="button" value="Back" onclick="window.location='/index.html'"></input>
+    <div class="content">
+      <table id="results">
+        <colgroup>
+          <col style="background-color:red">
+          <col span="5" style="background-color:yellow">
+        </colgroup>
+        <tr>
+          <th>Beer</th>
+          <th>ABV</th>
+          <th>Style</th>
+          <th>Category</th>
+          <th>Brewer</th>
+          <th>Country</th>
+        </tr>
+      </table>
+  </body>
+</html>

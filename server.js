@@ -9,7 +9,7 @@ var http = require('http'),
 // NOTE: your dataset can be as simple as the following, you need only implement functions for addition, deletion, and modification that are triggered by outside (i.e. client) actions, and made available to the front-end
 var data = [
   {
-    'model': 'toyota',
+    'beerName': 'beer',
     'year': 1999,
     'mpg': 23
   }, {
@@ -32,10 +32,12 @@ var server = http.createServer(function(req, res) {
         break;
       case '/index.html':
         sendFile(res, 'public/index.html')
-        console.log('ldwadawdawd0')
         break;
       case '/baby.html':
         sendFile(res, 'baby.html')
+        break;
+      case '/results.html':
+        sendFile(res, 'public/results.html')
         break;
       case '/css/style.css':
         sendFile(res, 'public/css/style.css', 'text/css')
