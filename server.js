@@ -49,6 +49,12 @@ var server = http.createServer(function(req, res) {
       case '/beerTapTrans.png':
         sendFile(res, 'beerTapTrans.png')
         break;
+      case '/beer.jpg':
+        sendFile(res, 'beer.jpg')
+        break;
+      case '/results':
+        // return list of results stored in memory
+        break;
       default:
         res.end('404 not found')
     }
@@ -75,7 +81,7 @@ var server = http.createServer(function(req, res) {
 })
 
 server.listen(process.env.PORT || port);
-console.log('listening on 8080')
+console.log('listening on 8000')
 
 function doAPICall(res, req, data) {
   //separate the data
