@@ -34,6 +34,9 @@ var server = http.createServer(function(req, res) {
         sendFile(res, 'public/index.html')
         console.log('ldwadawdawd0')
         break;
+      case '/baby.html':
+        sendFile(res, 'baby.html')
+        break;
       case '/css/style.css':
         sendFile(res, 'public/css/style.css', 'text/css')
         break;
