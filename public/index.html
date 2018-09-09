@@ -24,7 +24,7 @@
 #popup_logo {
   position: relative;
   display: block;
-  width: 200px
+  width: 200px;
   height: 200px;
   margin-left: auto;
   margin-right: auto;
@@ -419,17 +419,35 @@ select {
 
         </form>
 
-        <div style="border-bottom: 400px solid rgba(219,219, 219, 0.5);height: 0;width: 250px;float: right;position: absolute;right: 110px;bottom: 30px;"></div>
-      <div style="border-bottom: 400px solid rgba(219,219, 219);height: 0;width: 5px;float: right;position: absolute;right: 105px;bottom: 30px;"></div>
-      <div style="border-bottom: 400px solid rgba(219,219, 219);height: 0;width: 5px;float: right;position: absolute;right: 360px;bottom: 30px;"></div>
-      <div style="border-bottom: 5px solid rgba(219,219, 219);height: 0;width: 260px;float: right;position: absolute;right: 105px;bottom: 30px;"></div>
-      <div style="border-bottom: 400px solid rgba(219,219, 219);height: 0;width: 5px;float: right;position: absolute;right: 360px;bottom: 30px;"></div>
+        <img src="beerGlass2.png" style="opacity: 0.8;width: 310px;/* float: right; *//* margin-top: -120px; */position:  absolute;right: px;right: 150px;/* left: 500; */top: 230px;">
+        <img src="beer.png" id="beer" class="transform" style="opacity: 0.8; width: 300px; position: absolute; right: 155px; top: 240px;;">
+        <p style="color: #cdcbc9;font-size: 40px;position: absolute;right: px;right: 215px;/* left: 500; */top: 350px;">Beer Type</p>
 
-        <img src="../beerTapTrans.png" style="width: 310px;/* float: right; *//* margin-top: -120px; */position:  absolute;right: px;right: 87px;/* left: 500; */top: -10px;">
+        <img src="beerTapTrans.png" onclick="myFunction()" style="width: 310px;/* float: right; *//* margin-top: -120px; */position:  absolute;right: px;right: 145px;/* left: 500; */top: -95px;">
 
     </div>
 
   </body>
+
+  <script>
+    function myFunction() {
+      // document.getElementById("demo").innerHTML = "Hello World";
+      var elem = document.getElementById("beer");
+      console.log("Hello");
+      var pos = 500;
+var id = setInterval(frame, 20);
+function frame() {
+if (pos == 240) {
+clearInterval(id);
+} else {
+pos--;
+elem.style.top = pos + 'px';
+// elem.style.left = pos + 'px';
+}
+}
+    }
+  </script>
+
   <script>
   function checkAge() {
     var date = new Date();
