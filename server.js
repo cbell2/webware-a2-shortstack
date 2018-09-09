@@ -3,7 +3,7 @@ var http = require('http'),
   url = require('url'),
   path = require('path'),
   qs = require('querystring'),
-  XMLHttpRequest = require("xmlhttprequest").XMLHttpRequest,
+  // XMLHttpRequest = require("xmlhttprequest").XMLHttpRequest,
   port = 8000;
 
 // NOTE: your dataset can be as simple as the following, you need only implement functions for addition, deletion, and modification that are triggered by outside (i.e. client) actions, and made available to the front-end
@@ -43,18 +43,24 @@ var server = http.createServer(function(req, res) {
       case '/yes':
         console.log('yeeet')
         break;
-      case '/barImage.jpg':
+        case '/barImage.jpg':
         sendFile(res, 'barImage.jpg')
-        break;
+        break
       case '/beerTapTrans.png':
         sendFile(res, 'beerTapTrans.png')
-        break;
+        break
+      case '/beerGlass2.png':
+        sendFile(res, 'beerGlass2.png')
+        break
+      case '/beer.png':
+        sendFile(res, 'beer.png')
+        break
+      case '/kindergarten.jpg':
+        sendFile(res, 'kindergarten.jpg')
+        break
       case '/beer.jpg':
         sendFile(res, 'beer.jpg')
-        break;
-      case '/results':
-        // return list of results stored in memory
-        break;
+        break
       default:
         res.end('404 not found')
     }
@@ -65,14 +71,14 @@ var server = http.createServer(function(req, res) {
       body += data;
     });
     req.on('end', function() {
-      //console.log("Body: " + body);
-      var formData = qs.parse(body);
+      console.log("Body: " + body);
+      var formData = JSON.parse(body);
       console.log(formData.brewer);
       console.log(formData.categories);
       console.log(formData.style);
       console.log(formData.country);
 
-      doAPICall(req, res, formData)
+      doAPICall(res, formData)
     });
 
   } else {
@@ -83,7 +89,7 @@ var server = http.createServer(function(req, res) {
 server.listen(process.env.PORT || port);
 console.log('listening on 8000')
 
-function doAPICall(res, req, data) {
+function doAPICall(res, data) {
   //separate the data
   //get the data needed for api call
   var alcLow = data.Alcohol1;
@@ -113,17 +119,17 @@ function doAPICall(res, req, data) {
   }
 
   if(data.country !== 'Any'){
-    style = data.country;
+    country = data.country;
     countryTrue = '&refine.country=';
   }
   //organize the data
   var apiUrl = 'http://data.opendatasoft.com/api/records/1.0/search/?dataset=open-beer-database%40public-us&rows=6000&facet=style_name&facet=cat_name&facet=name_breweries&facet=country' + categoryTrue + category + countryTrue + country + brewerTrue + brewer + styleTrue + style;
   console.log(apiUrl);
   //do the api call
-  parsedData = makeCall(apiUrl, res, req, alcLow, alcHigh, processResponse);
+  parsedData = makeCall(apiUrl, res, alcLow, alcHigh, processResponse);
 }
 
-function makeCall(apiUrl, res, req, alcLow, alcHigh, callback) {
+function makeCall(apiUrl, res, alcLow, alcHigh, callback) {
   var parsedData;
   http.get(apiUrl, (resp) => {
     let data = '';
@@ -135,14 +141,14 @@ function makeCall(apiUrl, res, req, alcLow, alcHigh, callback) {
     resp.on('end', () => {
       //console.log(data);
       parsedData = JSON.parse(data);
-      callback(res, req, alcLow, alcHigh, parsedData);
+      callback(res, alcLow, alcHigh, parsedData);
     });
   }).on("error", (err) => {
     console.log("Error: " + err.message);
   });
 }
 
-function processResponse(res, req, alcLow, alcHigh, parsedData) {
+function processResponse(res, alcLow, alcHigh, parsedData) {
   //console.log(parsedData.records[1].fields.descript);
   console.log(parsedData.nhits);
   var alcByVolumeList = [];
@@ -155,7 +161,10 @@ function processResponse(res, req, alcLow, alcHigh, parsedData) {
 
   console.log(alcByVolumeList.length);
 
-  //res.writeHead(200, {'Content-Type': 'text/html'});
+  //THIS DOES NOT WORK YET!!!
+  res.writeHead(200, {'Content-Type': 'application/x-www-form-urlencoded'});
+  res.end(JSON.stringify(alcByVolumeList));
+
   //res.end('post received');
 
 
