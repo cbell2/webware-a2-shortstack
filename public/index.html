@@ -19,6 +19,10 @@
         "style": document.getElementById('style').value,
         "country": document.getElementById('country').value,
       };
+
+      // Change cursor to wait
+      document.body.style.cursor = "wait";
+
       xhr = new XMLHttpRequest();
       xhr.onreadystatechange = handle_res;
       xhr.open('POST', '/json-handler');
@@ -30,12 +34,16 @@
         if(this.status != 200) {
           //error
         }
+
         var beer = JSON.parse(this.responseText);
         var alc = JSON.stringify(beer.fields.abv);
 
         // Display the chosen beer
         document.getElementById("n1").innerHTML = beer.fields.name;
         document.getElementById("n2").innerHTML = alc.substring(0,3) + "%";
+
+        // Change cursor back to default
+        document.body.style.cursor = "default";
       }
     })
   })
