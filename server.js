@@ -6,22 +6,8 @@ var http = require('http'),
   // XMLHttpRequest = require("xmlhttprequest").XMLHttpRequest,
   port = 8000;
 
-// NOTE: your dataset can be as simple as the following, you need only implement functions for addition, deletion, and modification that are triggered by outside (i.e. client) actions, and made available to the front-end
-var data = [
-  {
-    'beerName': 'beer',
-    'year': 1999,
-    'mpg': 23
-  }, {
-    'model': 'honda',
-    'year': 2004,
-    'mpg': 30
-  }, {
-    'model': 'ford',
-    'year': 1987,
-    'mpg': 14
-  }
-]
+// Data-set to store recommened beers in memory and queried for results page
+var results = [];
 
 var server = http.createServer(function(req, res) {
   var uri = url.parse(req.url)
@@ -34,7 +20,7 @@ var server = http.createServer(function(req, res) {
         sendFile(res, 'public/index.html')
         break;
       case '/baby.html':
-        sendFile(res, 'baby.html')
+        sendFile(res, 'public/baby.html')
         break;
       case '/results.html':
         sendFile(res, 'public/results.html')
@@ -45,27 +31,28 @@ var server = http.createServer(function(req, res) {
       case '/js/scripts.js':
         sendFile(res, 'public/js/scripts.js', 'text/javascript')
         break;
-      case '/yes':
-        console.log('yeeet')
-        break;
-        case '/barImage.jpg':
+      case '/barImage.jpg':
         sendFile(res, 'barImage.jpg')
-        break
+        break;
       case '/beerTapTrans.png':
         sendFile(res, 'beerTapTrans.png')
-        break
+        break;
       case '/beerGlass2.png':
         sendFile(res, 'beerGlass2.png')
-        break
+        break;
       case '/beer.png':
         sendFile(res, 'beer.png')
-        break
+        break;
       case '/kindergarten.jpg':
         sendFile(res, 'kindergarten.jpg')
-        break
+        break;
       case '/beer.jpg':
         sendFile(res, 'beer.jpg')
-        break
+        break;
+      case '/data':
+        res.writeHead(200, {'Content-type': 'text/plain'})
+        res.end(JSON.stringify(results))
+        break;
       default:
         res.end('404 not found')
     }
@@ -76,13 +63,7 @@ var server = http.createServer(function(req, res) {
       body += data;
     });
     req.on('end', function() {
-      console.log("Body: " + body);
       var formData = JSON.parse(body);
-      console.log(formData.brewer);
-      console.log(formData.categories);
-      console.log(formData.style);
-      console.log(formData.country);
-
       doAPICall(res, formData)
     });
 
@@ -95,6 +76,8 @@ server.listen(process.env.PORT || port);
 console.log('listening on 8000')
 
 function doAPICall(res, data) {
+  //save results
+
   //separate the data
   //get the data needed for api call
   var alcLow = data.Alcohol1;
@@ -115,7 +98,7 @@ function doAPICall(res, data) {
 
   if(data.categories !== 'Any'){
     category = data.category;
-    categoryTrue = '&refine.cat_name';
+    categoryTrue = '&refine.cat_name=';
   }
 
   if(data.brewer !== 'Any'){
@@ -158,21 +141,20 @@ function processResponse(res, alcLow, alcHigh, parsedData) {
   console.log(parsedData.nhits);
   var alcByVolumeList = [];
   for (var x = 0; x < parsedData.nhits; x++) {
-    console.log(x);
     if (parsedData.records[x].fields.abv >= alcLow && parsedData.records[x].fields.abv <= alcHigh) {
       alcByVolumeList.push(parsedData.records[x]);
     }
   }
 
-  console.log(alcByVolumeList.length);
+  // Get random beer from returned list
+  var beer = alcByVolumeList[Math.floor(Math.random()*alcByVolumeList.length)];
 
-  //THIS DOES NOT WORK YET!!!
+  // Add beer to results array to be stored in memory
+  results.push(beer);
+
+  // Send response back to client with recommended beer
   res.writeHead(200, {'Content-Type': 'application/x-www-form-urlencoded'});
-  res.end(JSON.stringify(alcByVolumeList));
-
-  //res.end('post received');
-
-
+  res.end(JSON.stringify(beer));
 }
 
 function get404(req, res) {

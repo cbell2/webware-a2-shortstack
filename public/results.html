@@ -5,36 +5,54 @@
     <meta charset="utf-8">
     <link rel="stylesheet" type="text/css" href="css/style.css"/>
     <script>
-    function addRow(tableID) {
+
+    function addRow(tableID, beer) {
     			var table = document.getElementById(tableID);
 
     			var rowCount = table.rows.length;
     			var row = table.insertRow(rowCount);
 
-    			var cell1 = row.insertCell(0);
-    			var element1 = document.createElement("input");
-    			element1.type = "checkbox";
-    			element1.name="chkbox[]";
-    			cell1.appendChild(element1);
+          var fields = beer.fields;
 
-    			var cell2 = row.insertCell(1);
-    			cell2.innerHTML = rowCount + 1;
+    			var name = row.insertCell(0);
+    			name.innerHTML = fields.name;
 
-    			var cell3 = row.insertCell(2);
-    			var element2 = document.createElement("input");
-    			element2.type = "text";
-    			element2.name = "txtbox[]";
-    			cell3.appendChild(element2);
+    			var abv = row.insertCell(1);
+    			abv.innerHTML = fields.abv;
 
+    			var style = row.insertCell(2);
+          style.innerHTML = fields.style_name;
 
-    		}
-        function populateTable() {
-          // call addRows a bunch of times
-          addRow("results");
-          addRow("results");
-          addRow("results");
-        }
-        window.onload = populateTable;
+          var category = row.insertCell(3);
+          category.innerHTML = fields.cat_name;
+
+          var brewer = row.insertCell(4);
+          brewer.innerHTML = fields.name_breweries;
+
+          var country = row.insertCell(5);
+          country.innerHTML = fields.country;
+    }
+
+    function populateTable() {
+      xhr = new XMLHttpRequest()
+      xhr.onreadystatechange = handle_res
+      xhr.open("GET", "/data")
+      xhr.send()
+    }
+
+    function handle_res() {
+	     if(this.readyState != 4) return;
+	     if(this.status != 200) {
+         // error
+       }
+       console.log( JSON.parse(this.responseText) )
+       var results = JSON.parse(this.responseText);
+       results.forEach(function(d) {
+         addRow("results", d);
+       });
+    }
+
+    window.onload = populateTable;
     </script>
   </head>
   <body style="background-image: url(barImage.jpg); background-size: cover;">
@@ -47,7 +65,7 @@
           <col span="5" style="background-color:yellow">
         </colgroup>
         <tr>
-          <th>Beer</th>
+          <th>Name</th>
           <th>ABV</th>
           <th>Style</th>
           <th>Category</th>
