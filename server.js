@@ -40,6 +40,9 @@ var server = http.createServer(function(req, res) {
       case '/beerGlass2.png':
         sendFile(res, 'beerGlass2.png')
         break;
+      case '/sippyCup.png':
+        sendFile(res, 'sippyCup.png')
+        break;
       case '/beer.png':
         sendFile(res, 'beer.png')
         break;
@@ -49,6 +52,8 @@ var server = http.createServer(function(req, res) {
       case '/beer.jpg':
         sendFile(res, 'beer.jpg')
         break;
+      case '/babyDrinks':
+        chooseDrink(res);
       case '/data':
         res.writeHead(200, {'Content-type': 'text/plain'})
         res.end(JSON.stringify(results))
@@ -163,12 +168,20 @@ function get404(req, res) {
 // subroutines
 // NOTE: this is an ideal place to add your data functionality
 
-/*
-function submitbyid(){
-  var brewer = document.getElementById("brewer").value;
-  console.log(brewer);
+function chooseDrink(res){
+  var drinks = ["Skim Milk",
+                "1% Milk",
+                "2% Milk",
+                "Whole Milk",
+                "Chocolate Milk",
+                "Apple Juice",
+                "Orange Juice",
+                "Cranberry Juice",
+                "La Croix Seltzer"];
+  var rand = drinks[Math.floor(Math.random() * drinks.length)];
+  res.writeHead(200, {'Content-Type': 'text/plain'});
+  res.end(rand);
 }
-*/
 
 function sendFile(res, filename, contentType) {
   contentType = contentType || 'text/html';
