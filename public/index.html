@@ -25,6 +25,9 @@
       xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
       xhr.send(JSON.stringify(ConvertedJSON));
 
+      // Change cursor to wait
+      document.body.style.cursor = "wait";
+
       function handle_res() {
         if(this.readyState != 4) return;
         if(this.status != 200) {
@@ -39,32 +42,37 @@
         document.getElementById("beer").style.display = "block";
         var elem = document.getElementById("beer");
         var pos = 500;
-    var id = setInterval(frame, 20);
-    function frame() {
-      if (pos == 240) {
-        clearInterval(id);
-      } else {
-        pos--;
-        elem.style.top = pos + 'px';
-        // elem.style.left = pos + 'px';
-      }
-    }
 
         // Change cursor back to default
         document.body.style.cursor = "default";
+        var id = setInterval(frame, 20);
+        function frame() {
+          if (pos == 240) {
+            clearInterval(id);
+          } else {
+            pos--;
+            elem.style.top = pos + 'px';
+            // elem.style.left = pos + 'px';
+          }
+        }
       }
     })
   })
 
   // Helper functions
   function checkAge() {
-    var date = new Date();
-    var now = date.getTime(); // Current time
-
     var userDate = document.getElementById('day').value +"/"+ document.getElementById('month').value +"/"+  document.getElementById('year').value;
-    var bday = new Date(userDate).getTime(); // Time of user's birthday
 
-    var age = (now - bday) / (1000 * 356 * 24 * 3600); // Calculate age
+    var today = new Date();
+    var birthDate = new Date(userDate);
+
+    var age = today.getFullYear() - birthDate.getFullYear();
+    var m = today.getMonth() - birthDate.getMonth();
+    if (m < 0 || (m === 0 && today.getDate() < birthDate.getDate())) {
+        age--;
+    }
+
+    alert(age);
 
     if (age < 21) {
       // Route to baby page
