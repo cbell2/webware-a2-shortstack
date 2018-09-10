@@ -8,7 +8,7 @@
   <script>
   // Form submission
   window.addEventListener("DOMContentLoaded", function () {
-    var form = document.getElementById("the-button").addEventListener("click", function (){
+    var form = document.getElementById("beerTap").addEventListener("click", function (){
       event.preventDefault();
       var dataForm = new FormData(document.getElementById("form_id"));
       var ConvertedJSON= {
@@ -19,10 +19,6 @@
         "style": document.getElementById('style').value,
         "country": document.getElementById('country').value,
       };
-
-      // Change cursor to wait
-      document.body.style.cursor = "wait";
-
       xhr = new XMLHttpRequest();
       xhr.onreadystatechange = handle_res;
       xhr.open('POST', '/json-handler');
@@ -34,13 +30,25 @@
         if(this.status != 200) {
           //error
         }
-
         var beer = JSON.parse(this.responseText);
         var alc = JSON.stringify(beer.fields.abv);
 
         // Display the chosen beer
         document.getElementById("n1").innerHTML = beer.fields.name;
-        document.getElementById("n2").innerHTML = alc.substring(0,3) + "%";
+        document.getElementById("n2").innerHTML = alc.substring(0,4) + "%";
+        document.getElementById("beer").style.display = "block";
+        var elem = document.getElementById("beer");
+        var pos = 500;
+    var id = setInterval(frame, 20);
+    function frame() {
+      if (pos == 240) {
+        clearInterval(id);
+      } else {
+        pos--;
+        elem.style.top = pos + 'px';
+        // elem.style.left = pos + 'px';
+      }
+    }
 
         // Change cursor back to default
         document.body.style.cursor = "default";
@@ -63,22 +71,6 @@
       window.location = "baby.html";
     } else {
       document.getElementById('popup-wrapper').style.display="none";
-    }
-  }
-
-  function myFunction() {
-    var elem = document.getElementById("beer");
-
-    var pos = 500;
-    var id = setInterval(frame, 20);
-    function frame() {
-      if (pos == 240) {
-        clearInterval(id);
-      } else {
-        pos--;
-        elem.style.top = pos + 'px';
-        // elem.style.left = pos + 'px';
-      }
     }
   }
   </script>
@@ -274,23 +266,24 @@
       <br>
 
       <h2 style="color: white; text-align: center"> Assignment 2 - Beer Recommender Website</h2>
+      <h4 style="line-height: 0%;color: white; text-align: center"> (Click the tap to get boozy)</h4>
 
       <hr style="width: 80%; border-color: #ebb86e">
-      <h2 style="color:#ebb86e; text-align: center; font-style: italic">Alcohol Content</h1>
+      <h3 style="color:#ebb86e; text-align: center; font-style: italic">Alcohol Content</h3>
           <hr style="width: 80%; border-color: #ebb86e">
 
           <label for="Alcohol1">Between</label>
-          <input id="alcohol_low" name="Alcohol1" value="0" style="width: 30px; text-align: center">
+          <input id="alcohol_low" name="Alcohol1" value="0" style="width: 30px;text-align: center;background-color: #0b171b;color: white;border-color: #ebb86e;/* outline-color: red; *//* outline: red; */ width: 30px; text-align: center">
           <label for="Alcohol2">% and </label>
-          <input id="alcohol_high" name="Alcohol2" value="100" style="width: 30px; text-align: center">
+          <input id="alcohol_high" name="Alcohol2" value="100" style="width: 30px;text-align: center;background-color: #0b171b;color: white;border-color: #ebb86e;/* outline-color: red; *//* outline: red; */width: 30px; text-align: center">
           <label for="Alcohol2">% alcohol by volume </label>
 
           <hr style="width: 80%; border-color: #ebb86e">
-          <h2 style="color:#ebb86e; text-align: center; font-style: italic">Style</h1>
+          <h3 style="color:#ebb86e; text-align: center; font-style: italic">Style</h3>
           <hr style="width: 80%; border-color: #ebb86e">
 
           <label for="style">What style of beer do you want to order?</label>
-          <select id="style" name="style">
+          <select id="style" name="style" style="width: 150px;text-align: center;background-color: #0b171b;color: white;border-color: #ebb86e;/* outline-color: red; *//* outline: red; */">
               <option selected="selected" value="Any">Any</option>
               <option value="Style+Pale+Ale">Style Pale Ale</option>
               <option value="American-Style+Lager">American-Style Lager</option>
@@ -359,11 +352,11 @@
             </select>
 
           <hr style="width: 80%; border-color: #ebb86e">
-          <h2 style="color:#ebb86e; text-align: center; font-style: italic">Category</h1>
+          <h3 style="color:#ebb86e; text-align: center; font-style: italic">Category</h3>
           <hr style="width: 80%; border-color: #ebb86e">
 
           <label for="categories">What category of beer do you want to order?</label>
-          <select id="categories" name="categories">
+          <select id="categories" name="categories" style="width: 150px;text-align: center;background-color: #0b171b;color: white;border-color: #ebb86e;/* outline-color: red; *//* outline: red; */">
               <option selected="selected" value="Any">Any</option>
               <option value="North+American+Ale">North American Ale</option>
               <option value="North+American+Lager">North American Lager</option>
@@ -376,11 +369,11 @@
             </select>
 
           <hr style="width: 80%; border-color: #ebb86e">
-          <h2 style="color:#ebb86e; text-align: center; font-style: italic">Brewer</h1>
+          <h3 style="color:#ebb86e; text-align: center; font-style: italic">Brewer</h3>
           <hr style="width: 80%; border-color: #ebb86e">
 
           <label for="brewer">What brewery do you want to order from?</label>
-          <select id="brewer" name="brewer">
+          <select id="brewer" name="brewer" style="width: 150px;text-align: center;background-color: #0b171b;color: white;border-color: #ebb86e;/* outline-color: red; *//* outline: red; */">
               <option selected="selected" value="Any">Any</option>
               <option value="Midnight+Sun+Brewing+Co.">Midnight Sun Brewing Co.</option>
               <option value="Rogue+Ales">Rogue Ales</option>
@@ -483,11 +476,11 @@
             </select>
 
           <hr style="width: 80%; border-color: #ebb86e">
-          <h2 style="color:#ebb86e; text-align: center; font-style: italic">Country</h1>
+          <h3 style="color:#ebb86e; text-align: center; font-style: italic">Country</h3>
           <hr style="width: 80%; border-color: #ebb86e">
 
           <label for="country">What country do you want to order from?</label>
-          <select id="country" name="country">
+          <select id="country" name="country" style="width: 150px;text-align: center;background-color: #0b171b;color: white;border-color: #ebb86e;/* outline-color: red; *//* outline: red; */">
               <option selected="selected" value="Any">Any</option>
               <option value="United+States">United States</option>
               <option value="Belgium">Belgium</option>
@@ -552,18 +545,19 @@
             </select>
             <br>
             <br>
-            <input id="the-button" type="submit" value="Submit">
+            <!-- <input id="the-button" type="submit" value="Submit"> -->
+
+            <input id="results" type="button" value="View Logs" style="height: 30px; width: 150px;text-align: center;background-color: #0b171b;color: white;border-color: #ebb86e;/* outline-color: red; *//* outline: red; */" onclick="window.location = 'results.html'">
             <br>
             <br>
-            <input id="results" type="button" value="Results" onclick="window.location = 'results.html'">
-        </form>
+          </form>
 
         <img src="beerGlass2.png" style="opacity: 0.8;width: 310px;/* float: right; *//* margin-top: -120px; */position:  absolute;right: px;right: 150px;/* left: 500; */top: 230px;">
         <img src="beer.png" id="beer" class="transform" style="opacity: 0.8; width: 300px; position: absolute; right: 155px; top: 240px;;">
-        <p id="n1" style="color: #cdcbc9;font-size: 20;position: absolute;right: px;right: 215px;/* left: 500; */top: 350px;"></p>
-        <p id="n2" style="color: #cdcbc9;font-size: 20;position: absolute;right: px;right: 300px;/* left: 500; */top: 400px;"></p>
+        <p id="n1" style="word-wrap:break-word;color: #cdcbc9;font-size: 20;position: absolute;right: px;right: 180px;/* left: 500; */top: 350px;width: 250px;"></p>
+        <p id="n2" style="word-wrap:break-word;color: #cdcbc9;font-size: 20;position: absolute;right: px;right: 180px;/* left: 500; */top: 400px;width: 250px;"></p>
 
-        <img src="beerTapTrans.png" onclick="myFunction()" style="width: 310px;/* float: right; *//* margin-top: -120px; */position:  absolute;right: px;right: 145px;/* left: 500; */top: -95px;">
+        <img id="beerTap" src="beerTapTrans.png" onclick="myFunction()" style="width: 310px;/* float: right; *//* margin-top: -120px; */position:  absolute;right: px;right: 145px;/* left: 500; */top: -95px;">
 
     </div>
   </body>
