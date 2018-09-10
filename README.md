@@ -27,7 +27,7 @@ Kamil Gumienny
 - **Tech Achievement 2**: Making a custom function call to an API based on form selection on the index page 
 - **Tech Achievement 3**: Adding an Audio snippet in the baby.html page that plays on click.
 - **Tech Achievement 4**: Added an age-gate popup that verifies a user's age
-- **Tech Achievement 5**: 
+- **Tech Achievement 5**: Created a callback function in the server that contacts the beer database
 - **Tech Achievement 6**:
 - **Tech Achievement 7**:
 - **Tech Achievement 8**:
@@ -43,7 +43,7 @@ Kamil Gumienny
 
 ### Team Coordination Activities
 
-We met up as a group on multiple occasions and discussed our vision for the webpage. In our groupchat we would allocate the work and ask questions as necessary. Together we were able to figure out how to send and recieve a JSON file using XMLHTTPRequests, populate a webpage with results that are returned from the server, we learned how to select elements based on their ID's, making API calls to external databases.
+We met up as a group on multiple occasions and discussed our vision for the webpage. In our groupchat we would allocate the work and ask questions as necessary. Together we were able to figure out how to send and recieve a JSON file using XMLHTTPRequests, populate a webpage with results that are returned from the server, we learned how to select elements based on their ID's, making API calls to external databases. The hardest concept to grasp was getting form data and sending it over an XML request as opposed to letting the form submit with a method="post"or "get" in the form header. The data from the form was manually pulled upon submission and added to a json object that was sent over to the backend. The reason we chose to do it this way was because an XML request allowed us to go obtain results after  POSTing the data and update the webpage accordingly.  
 
 
 
