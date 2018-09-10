@@ -39,6 +39,7 @@
         // Display the chosen beer
         document.getElementById("n1").innerHTML = beer.fields.name;
         document.getElementById("n2").innerHTML = alc.substring(0,4) + "%";
+      
         document.getElementById("beer").style.display = "block";
         var elem = document.getElementById("beer");
         var pos = 500;
@@ -71,8 +72,6 @@
     if (m < 0 || (m === 0 && today.getDate() < birthDate.getDate())) {
         age--;
     }
-
-    alert(age);
 
     if (age < 21) {
       // Route to baby page
@@ -561,11 +560,11 @@
           </form>
 
         <img src="beerGlass2.png" style="opacity: 0.8;width: 310px;/* float: right; *//* margin-top: -120px; */position:  absolute;right: px;right: 150px;/* left: 500; */top: 230px;">
-        <img src="beer.png" id="beer" class="transform" style="opacity: 0.8; width: 300px; position: absolute; right: 155px; top: 240px;;">
+        <img src="beer.png" id="beer" class="transform" style="display: none; opacity: 0.8; width: 300px; position: absolute; right: 155px; top: 240px;;">
         <p id="n1" style="word-wrap:break-word;color: #cdcbc9;font-size: 20;position: absolute;right: px;right: 180px;/* left: 500; */top: 350px;width: 250px;"></p>
         <p id="n2" style="word-wrap:break-word;color: #cdcbc9;font-size: 20;position: absolute;right: px;right: 180px;/* left: 500; */top: 400px;width: 250px;"></p>
 
-        <img id="beerTap" src="beerTapTrans.png" onclick="myFunction()" style="width: 310px;/* float: right; *//* margin-top: -120px; */position:  absolute;right: px;right: 145px;/* left: 500; */top: -95px;">
+        <img id="beerTap" src="beerTapTrans.png" style="width: 310px;/* float: right; *//* margin-top: -120px; */position:  absolute;right: px;right: 145px;/* left: 500; */top: -95px;">
 
     </div>
   </body>
