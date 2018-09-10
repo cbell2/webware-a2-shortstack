@@ -1,16 +1,6 @@
 ## Beer Recommender Website - Brew Bros
 
-Users over 21 are able to fill out a form with parameters such as alcohol by volume, style, category, brewer, and country and our webapp randomly selects a random beer that fits their preferances. We created a clean user interface that makes it easy to get a customized beer recommendation. Access to an open beer database allowed our team to fetch results given user preferences to get exactly what the user is craving. The website gives a recommendation(randomly chosen from the list of results) if one exists; however, in some cases we are not able to accomodate a specific taste because a beer of that nature does not exist. In the future, a possible option that would complete the application would be a link on where to buy the beer or where it is available locally for that user.
-
-***DELETE THIS LATER***
-Here is a sample formula for summarizing your activities, talk about:
-- the domain area the project pertains to
-- the main challenges or problems the application addresses
-- the key innovations that make it possible to address the problem
-- the main results of the implementation, does it really address the problem?
-- any additional implications of the resulting application, or possibly areas for future work that have been discovered as part of the design and implementation activities
-
-(Note that when I use the above formula, I aim to have only one sentence per thought in order to remain concise.)
+Users over 21 are able to fill out a form with parameters such as alcohol by volume, style, category, brewer, and country and our web application randomly selects a random beer that fits their preferences. We created a clean user interface that makes it easy to get a customized beer recommendation. Access to an open beer database allowed our team to fetch results given user preferences to get exactly what the user is craving. The website gives a recommendation(randomly chosen from the list of results) if one exists; however, in some cases we are not able to accommodate a specific taste because a beer of that nature does not exist. In the future, a possible option that would complete the application would be a link on where to buy the beer or where it is available locally for that user, in which case our application would be a one-stop-shop for beer enthusiasts.
 
 ## Team and Team Members
 Team Brew-Bros
@@ -27,17 +17,14 @@ Kamil Gumienny
 - **Tech Achievement 4**: Added an age-gate popup that verifies a user's age
 - **Tech Achievement 5**: Created a callback function in the server that contacts the beer database
 - **Tech Achievement 6**: Routing multiple HTML pages
-- **Tech Achievement 7**:
-- **Tech Achievement 8**:
-- **Tech Achievement 9**:
 
 ### Design/Evaluation Achievements
 - **Design Achievement 1**: Javascript Animation that fills a beer and displays information
 - **Design Achievement 2**: Consistent CSS color and design scheme
-- **Design Achievement 3**: Creating a clickable image (beer tap) that calls a JS function
+- **Design Achievement 3**: Creating a clickable image (beer tap and sippy cup) that calls a JS function
 - **Design Achievement 4**: Additional page for users under the age of 21
-- **Design Achievement 5**: 
-- **Design Achievement 6**: 
+- **Design Achievement 5**: Added a custom beer icon that displays in the tab header
+- **Design Achievement 6**: Cursor becomes a loading icon to indicate the backend is processing to keep users from leaving the site because the API call is fairly slow
 
 ### Team Coordination Activities
 
