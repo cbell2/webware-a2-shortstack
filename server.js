@@ -54,6 +54,10 @@ var server = http.createServer(function(req, res) {
         break;
       case '/babyDrinks':
         chooseDrink(res);
+        break;
+      case '/babyCry.mp3':
+        sendFile(res, "babyCry.mp3");
+        break;
       case '/data':
         res.writeHead(200, {'Content-type': 'text/plain'})
         res.end(JSON.stringify(results))

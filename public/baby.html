@@ -33,20 +33,24 @@
          <label for="style">Today's special for the baby is:</label>
          <br><br>
 
-         <h3 id="drinkName">Click your sippy cup before your nap time to get a drink reccomendation!</h3>
+         <h3 id="drinkName">Click your sippy cup before your nap time to get a drink recommendation!</h3>
 
           <br>
           <br>
 
       <img src="sippyCup.png" onclick="getRandomDrink()" id="Minions Sippy Cup"  style=" width: 600px; position: absolute; right: 155px; top: 240px;;">
       <p id="n2" name="n2" style="color: white;font-size: 40px;position: absolute;right: px;right: 215px;/* left: 500; */top: 350px;"></p>
-
-
-
     </div>
+    <audio id="myAudio">
+      <source src="babyCry.mp3" type="audio/mpeg">
+        Your browser does not suppoer audio.
+    </audio>
 
     <script>
-  function getRandomDrink() {
+
+    function getRandomDrink() {
+    var cry = document.getElementById("myAudio");
+    cry.play();
     xhr = new XMLHttpRequest();
     xhr.onreadystatechange = handle_res;
     xhr.open("GET", "/babyDrinks")
@@ -65,23 +69,6 @@
     xhr.send();
   }
 
-  function myFunction() {
-    var n2 = document.getElementById('n2');
-    document.getElementById("n2").innerHTML = document.getElementById('n1').value;
-    var elem = document.getElementById("beer");
-    var pos = 500;
-    var id = setInterval(frame, 20);
-
-    function frame() {
-      if (pos == 240) {
-        clearInterval(id);
-      } else {
-        pos--;
-        elem.style.top = pos + 'px';
-        // elem.style.left = pos + 'px';
-      }
-    }
-  }
 </script>
   </body>
 </html>
