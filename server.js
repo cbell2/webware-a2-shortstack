@@ -107,7 +107,7 @@ if(data.style !== 'Any'){
 }
 
 if(data.categories !== 'Any'){
-  category = data.category;
+  category = data.categories;
   categoryTrue = '&refine.cat_name=';
 }
 
